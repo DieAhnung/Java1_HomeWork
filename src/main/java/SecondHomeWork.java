@@ -1,8 +1,8 @@
 public class SecondHomeWork {
     public static void main(String[] args) {
-      invertArray();
-       fillArray();
-       changeArray();
+   //   invertArray();
+    //   fillArray();
+      // changeArray();
         fillDiagonal();
 
     }
