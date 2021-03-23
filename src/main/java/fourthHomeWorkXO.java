@@ -53,6 +53,7 @@ public class fourthHomeWorkXO {
         return false;
     }
 
+
     public static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
