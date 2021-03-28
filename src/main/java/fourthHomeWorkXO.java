@@ -40,19 +40,35 @@ public class fourthHomeWorkXO {
         System.out.println("Игра закончена");
     }
 
-
-    public static boolean checkWin(char symb) {
-        if (map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
-        if (map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
-        if (map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
-        if (map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
-        if (map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
-        if (map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
-        if (map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
-        if (map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
-        return false;
+    public static boolean checkLine(int start_x, int start_y, int dx, int dy, char symb) {
+        for (int i = 0; i < SIZE; i++) {
+            if (map[start_x + i * dx][start_y + i * dy] != symb)
+                return false;
+        }
+        return true;
     }
+    public static boolean checkWin(char symb) {
+//        if (map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
+//        if (map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
+//        if (map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
+//        if (map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
+//        if (map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
+//        if (map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
+//        if (map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
+//        if (map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+//        return false;
 
+ for (int i = 0; i < SIZE; i++) {
+        // проверяем строки
+        if (checkLine(i, 0, 0, 1, symb)) return true;
+        // проверяем столбцы
+        if (checkLine(0, i, 1, 0, symb)) return true;
+    }
+    // проверяем диагонали
+        if (checkLine(0, 0, 1, 1, symb)) return true;
+        if (checkLine(0, SIZE - 1, 1, -1, symb)) return true;
+        return false;
+}
     public static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
